@@ -1,13 +1,15 @@
 ---
 driver:
-  name: default
+  name:  default
 platforms:
   - name: instance
     # you might want to add your own variables here based on what provisioning
     # you are doing like:
-    # image: quay.io/centos/centos:stream8
+   # image: quay.io/centos/centos:stream8
 provisioner:
   name: ansible
   config_options:
     defaults:
       collections_path: ${ANSIBLE_COLLECTIONS_PATH}
+#verifier:
+#  name: testinfra
