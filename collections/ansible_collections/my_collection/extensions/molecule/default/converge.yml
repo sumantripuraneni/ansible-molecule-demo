@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Include role
+      ansible.builtin.include_role:
+        name: my_collection.demo.demo_role
