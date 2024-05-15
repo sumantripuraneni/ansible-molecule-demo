@@ -5,6 +5,7 @@
      - httpd
      - httpd-tools
    state: latest
+   use_backend: "yum4"
 
 - name: Create content 
   ansible.builtin.copy:

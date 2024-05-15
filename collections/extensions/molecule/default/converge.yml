@@ -1,7 +1,10 @@
 ---
 - name: Converge
-  hosts: localhost
+  hosts: all
   gather_facts: false
+  #become: true
+  vars:
+    ansible_ssh_pipelining: no
   tasks:
     - name: Include role
       ansible.builtin.include_role:
