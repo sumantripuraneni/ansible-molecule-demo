@@ -1,6 +1,7 @@
 yum install python39 -y
 /usr/bin/python3.9 -m venv molecule 
-source bin/activate
+cd molecule && source bin/activate
 pip install ansible testinfra molecule podman python-vagrant ansible-lint \
   flake8 molecule[lint] molecule[podman]
+pip install molecule-plugins[podman]
 export ANSIBLE_COLLECTIONS_PATH=/root/ansible-molecule-demo/collections
