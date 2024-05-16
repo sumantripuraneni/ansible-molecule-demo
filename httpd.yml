@@ -1,7 +1,8 @@
 ---
 - name: Play to install and configure httpd
-  hosts: all
+  hosts: localhost
   tasks:
-    - name: Include demo_role
+    - name: Include httpd role
       ansible.builtin.include_role:
-        name: demo_role
+        name: my_ns.my_collection.httpd
+        tasks_from: main.yml
