@@ -3,20 +3,33 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  # no_log: "{{ molecule_no_log }}"
+  vars:
+    images:
+      - ubi8
+      - ubi9
   tasks:
     # Developer must implement.
 
     - name: Stop a container
       containers.podman.podman_container:
-        name: instance
+        name: "{{ item }}"
         state: stopped
+      ignore_errors: true
+      loop: "{{ images }}"
 
-    
-    - name: remove container
+    - name: Remove container
       containers.podman.podman_container:
-        name: instance
+        name: "{{ item }}"
         state: absent
+      ignore_errors: true
+      loop: "{{ images }}"
+
+    - name: Remove an image
+      containers.podman.podman_image:
+        name: registry.access.redhat.com/{{ item }}/ubi-init
+        state: absent
+      ignore_errors: true
+      loop: "{{ images }}"
 
     # Mandatory configuration for Molecule to function.
 

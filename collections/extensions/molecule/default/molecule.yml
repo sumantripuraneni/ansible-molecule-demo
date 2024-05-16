@@ -4,8 +4,15 @@
 driver:
   name: podman
 platforms:
-  - name: instance
+  - name: ubi8
     image: registry.access.redhat.com/ubi8/ubi-init:latest
+    pre_build_image: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    command: "/usr/sbin/init"
+  - name: ubi9
+    image: registry.access.redhat.com/ubi9/ubi-init:latest
     pre_build_image: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro

@@ -9,7 +9,7 @@
 
 - name: Create content 
   ansible.builtin.copy:
-    content: "Hello, this is for molecule demo"
+    content: "{{ httpd_content }}"
     dest: /var/www/html/index.html
 
 - name: Start and enable service httpd
@@ -17,3 +17,4 @@
     name: httpd
     state: started
     enabled: yes 
+...

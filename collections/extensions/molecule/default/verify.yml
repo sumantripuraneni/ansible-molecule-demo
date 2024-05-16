@@ -2,21 +2,28 @@
 ---
 - name: Verify
   hosts: all
+  gather_facts: false
   vars:
     expected_content: "Hello, this is for molecule demo"
   tasks:
-  - name: Get index.html
-    uri:
-      url: http://localhost
-      return_content: yes
-    register: this
-    failed_when: "expected_content not in this.content"
+ 
+    - name: Print hostname 
+      debug:
+        msg: "{{ inventory_hostname }}"
+    
+    - name: Get index.html
+      uri:
+        url: http://localhost
+        return_content: yes
+      register: this
+      failed_when: "expected_content not in this.content"
 
-  - name: Ensure content type is text/html
-    assert:
-      that:
-      - "'text/html' in this.content_type"
+    - name: Ensure content type is text/html
+      assert:
+        that:
+          - "'text/html' in this.content_type"
 
-  - name: Debug results
-    debug:
-      var: this.content
+    - name: Debug results
+      debug:
+        var: this.content
+...

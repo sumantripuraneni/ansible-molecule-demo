@@ -5,5 +5,6 @@
   tasks:
     - name: Testing role
       ansible.builtin.include_role:
-        name: my_collection.demo.demo_role
+        name: my_ns.my_collection.httpd
         tasks_from: main.yml
+...
