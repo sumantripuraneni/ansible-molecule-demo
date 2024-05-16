@@ -7,6 +7,17 @@
   tasks:
     # Developer must implement.
 
+    - name: Stop a container
+      containers.podman.podman_container:
+        name: instance
+        state: stopped
+
+    
+    - name: remove container
+      containers.podman.podman_container:
+        name: instance
+        state: absent
+
     # Mandatory configuration for Molecule to function.
 
     - name: Populate instance config

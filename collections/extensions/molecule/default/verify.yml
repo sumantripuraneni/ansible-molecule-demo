@@ -1,7 +1,7 @@
 # This is an example playbook to execute Ansible tests.
 ---
 - name: Verify
-  hosts: localhost
+  hosts: all
   vars:
     expected_content: "Hello, this is for molecule demo"
   tasks:
